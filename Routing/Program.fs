@@ -52,5 +52,3 @@ module OptimizedRouting
         let RouteLegFinder ( fromIndex, toIndex ) = 
             legs |> Seq.filter ( fun leg -> leg.FromPoint = pts_array.[fromIndex-1] && leg.ToPoint = pts_array.[toIndex-1] ) |> Seq.head
         routes |> Seq.map ( fun rt -> Route( ( seq { for x = 0 to (rt.Length - 2) do yield RouteLegFinder(rt.[x], rt.[x+1]) } |> Seq.toArray ) ) )
-        
-        
